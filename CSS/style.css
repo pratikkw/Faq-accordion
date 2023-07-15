@@ -141,6 +141,11 @@ body {
     display: none;
   }
 
+  .img__box-2,
+  .img__box-3 {
+    display: block;
+  }
+
   .img-mobile-2 {
     width: 45%;
     position: absolute;
