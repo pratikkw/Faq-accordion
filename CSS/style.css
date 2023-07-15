@@ -1,0 +1,171 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --verydark-grayish-blue: hsl(237, 12%, 33%);
+  --dark-grayish-blue: hsl(240, 6%, 50%);
+  --light-grayish-blue: hsl(240, 5%, 91%);
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: "Kumbh+Sans", sans-serif;
+  background-image: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  scroll-behavior: smooth;
+  margin-block: 4.5rem;
+}
+
+.main {
+  background-color: #fff;
+  padding: 0 1.75rem 3.5rem 1.75rem;
+  margin-inline: 1rem;
+  position: relative;
+  border-radius: 1.5rem;
+}
+
+.img__box {
+  margin-bottom: 9rem;
+}
+
+.img__box-2,
+.img__box-3 {
+  display: none;
+}
+
+.img__box :where(.img-mobile, .img-mobile-2) {
+  width: 75%;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+}
+
+.img-mobile {
+  transform: translate(-50%, -60%);
+  z-index: 5;
+}
+
+.img-mobile-2 {
+  z-index: 4;
+  transform: translate(-50%, 0%);
+}
+
+.primary-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.faq {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.faq__box {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #222;
+}
+
+.faq__question {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq__question > h4 {
+  font-size: 0.9rem;
+}
+
+.question {
+  font-weight: 300;
+}
+
+.arrow {
+  transition: transform 0.3s;
+}
+
+.faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all 0.3s;
+}
+
+.faq__answer > p {
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Toggle classes */
+.bold-text {
+  font-weight: 600;
+}
+
+.arrow-active {
+  transform: rotate(180deg);
+}
+
+.faq__answer-active {
+  grid-template-rows: 1fr;
+  margin-top: 0.75rem;
+}
+
+@media only screen and (min-width: 43.75rem) {
+  body {
+    margin: 0;
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 800px;
+    overflow: hidden;
+    padding-block: 3.5rem;
+  }
+
+  .img__box {
+    display: none;
+  }
+
+  .img-mobile-2 {
+    width: 45%;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    z-index: 5;
+  }
+
+  .img-mobile-2-1 {
+    width: 85%;
+    position: absolute;
+    top: -44%;
+    left: -48%;
+    z-index: 4;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .img-mobile-2-2 {
+    position: absolute;
+    z-index: 8;
+    top: 34%;
+    left: -9.5%;
+    width: 9rem;
+  }
+}
