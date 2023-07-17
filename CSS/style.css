@@ -7,9 +7,14 @@
 }
 
 :root {
+  --white-clr: #fff;
+  --main-heading-clr: hsl(238, 29%, 16%);
+  --text-clr: hsl(240, 6%, 50%);
+  --main-clr: hsl(14, 88%, 65%);
+  --font-size: calc(12rem / 16);
+  --main-padding: 2rem 1.5rem;
+
   --verydark-grayish-blue: hsl(237, 12%, 33%);
-  --dark-grayish-blue: hsl(240, 6%, 50%);
-  --light-grayish-blue: hsl(240, 5%, 91%);
 }
 
 img {
@@ -19,93 +24,163 @@ img {
 body {
   font-family: "Kumbh+Sans", sans-serif;
   background-image: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+  background-repeat: no-repeat;
   min-height: 100vh;
+  width: 100%;
   display: grid;
   place-content: center;
-  scroll-behavior: smooth;
-  margin-block: 4.5rem;
+
+  line-height: 1.5;
+  color: var(--text-clr);
+  font-size: var(--font-size);
 }
 
-.main {
-  background-color: #fff;
-  padding: 0 1.75rem 3.5rem 1.75rem;
-  margin-inline: 1rem;
-  border-radius: 1.5rem;
+/* UTILITIES */
+.padding-bottom {
+  padding-bottom: 1rem;
 }
 
 .primary-title {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+  font-size: calc(14rem / 16);
+}
+/* ------------- */
+
+.main {
+  --gap: 1rem;
+  background-color: var(--white-clr);
+  margin: 1rem 1rem;
+  border-radius: 1.5rem;
+  position: relative;
+}
+
+.main::before {
+  content: "";
+  display: block;
+  background-image: url(../images/illustration-woman-online-mobile.svg),
+    url(../images/bg-pattern-mobile.svg);
+  width: 15.625rem;
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: -28%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center center, center 100%;
+}
+
+.img__box {
+  display: none;
 }
 
 .faq {
+  margin-top: 9rem;
+}
+
+.faq > h1 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--main-heading-clr);
+}
+
+.faq__container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: var(--gap, 1rem);
+  padding: var(--main-padding);
 }
 
 .faq__box {
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--text-clr);
 }
 
 .faq__question {
   cursor: pointer;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s;
 }
 
-.faq__question > .question {
-  font-size: 0.9rem;
-}
-
-.question {
-  font-weight: 300;
-}
-
-.arrow {
-  transition: transform 0.3s;
+.faq__answer > p {
+  overflow: hidden;
 }
 
 .faq__answer {
   display: grid;
   grid-template-rows: 0fr;
-  transition: all 0.3s;
+  transition: all 0.5s;
 }
 
-.faq__answer > p {
-  overflow: hidden;
-  font-size: 12px;
-  line-height: 1.5;
+/* Toggle Classes */
+.faq__question--active {
+  color: var(--main-clr);
 }
 
-/* Toggle classes */
-.bold-text {
-  font-weight: 600;
+.faq__answer--active {
+  margin-top: 0.75rem;
+  grid-template-rows: 1fr;
 }
 
-.arrow-active {
+.arrow {
+  transition: transform 0.5s;
+}
+
+.arrow--rotate {
   transform: rotate(180deg);
 }
 
-.faq__answer-active {
-  grid-template-rows: 1fr;
-  margin-top: 0.75rem;
+@media only screen and (min-width: 31.25rem) {
+  body {
+    padding-block: 11rem;
+  }
+
+  .faq {
+    margin-top: 12rem;
+  }
+
+  .main::before {
+    width: 31.25rem;
+    top: -49%;
+    background-position: top center, center 82%;
+    background-size: 80% 100%, 80%;
+  }
 }
 
-@media only screen and (min-width: 43.75rem) {
+@media only screen and (min-width: 59.375rem) {
   body {
-    margin: 0;
+    padding: 0;
   }
 
   .main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: 56.25rem;
-    padding-block: 3.5rem;
+    padding: 0rem 0rem;
+  }
+
+  .img__box {
+    display: block;
+    background-image: url(../images/illustration-woman-online-desktop.svg),
+      url(../images/bg-pattern-desktop.svg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: -5rem center, -36rem -19rem;
+    position: relative;
+  }
+
+  .img__box-inner {
+    position: absolute;
+    top: 41%;
+    left: -29%;
+  }
+
+  .faq {
+    margin: 0;
+    padding: 3.5rem 4rem 3.5rem 0;
+  }
+
+  .main::before {
+    display: none;
   }
 }
